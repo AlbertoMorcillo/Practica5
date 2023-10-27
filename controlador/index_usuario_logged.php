@@ -66,7 +66,7 @@ function mostrarArticulos($connexio, $start, $cantidad_articulos_por_pagina) {
  *
  * @return void
  */
-function elegirCantidadArticulosPorPagina() {
+function elegirCantidadArticulosPorPagina(): int {
     if (isset($_POST['cantidadArticulosPorPagina'])) {
         $cantidad_articulos_por_pagina = $_POST['cantidadArticulosPorPagina'];
     } else {

@@ -3,7 +3,7 @@
 
 try {
     // Establecer la conexión a la base de datos
-    $connexio = new PDO('mysql:host=localhost;dbname=pt04_alberto_morcillo', 'root', '');
+    $connexio = new PDO('mysql:host=localhost;dbname=pt05_alberto_morcillo', 'root', '');
 
     // Establecer el modo de errores para PDO
     $connexio->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
