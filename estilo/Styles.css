@@ -1,0 +1,203 @@
+/* Estilos generales */
+/* Created by: Alberto Morcillo */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #e9e9e9;
+    color: #2e2e2e;
+    font-family: 'Open Sans Condensed', sans-serif;
+}
+
+.contenidor {
+    width: 90%;
+    max-width: 1000px;
+    margin: auto; 
+    padding: 20px;
+}
+
+h1 {
+    margin: 20px 0;
+    text-align: center;
+    color: #1b4a81;
+    font-weight: bold;
+}
+
+.articles ul {
+    list-style: none;
+}
+
+.articles ul li {
+    padding: 15px 10px;
+    border-bottom: 1px solid #c8c8c8;
+}
+
+.paginacio ul {
+    list-style: none;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.paginacio ul li {
+    display: inline-block;
+    margin-right: 10px; 
+}
+
+.paginacio ul li.disabled {
+    background: #c2bfbf;
+    cursor: not-allowed;
+}
+
+.paginacio ul li a {
+    display: inline-block;
+    padding: 10px 20px;
+    background: #424242;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.paginacio ul li a:hover {
+    background: #399228;
+}
+
+/* Estilos para los formularios de inicio de sesión y registro */
+.login-page,
+.signin-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.login-form,
+.signin-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+    max-width: 500px;
+}
+
+.login-form label,
+.signin-form label {
+    margin-bottom: 10px;
+}
+
+.login-form input[type="email"],
+.login-form input[type="password"],
+.signin-form input[type="email"],
+.signin-form input[type="password"] {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.login-form input[type="submit"],
+.signin-form input[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.login-form input[type="submit"]:hover,
+.signin-form input[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+.btn-add-comment.custom {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.btn-add-comment.custom:hover {
+    background-color: #3e8e41;
+}
+
+.btn-add-comment.custom:active {
+    background-color: #1e5623;
+}
+
+
+/* Estilos para los botones específicos de cada formulario */
+.btn-signin,
+.btn-login,
+.btn-return {
+    background-color: #008CBA;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+
+.btn-signin:hover,
+.btn-login:hover,
+.btn-return:hover {
+    background-color: #006080;
+}
+
+/* Estilos para el botón de borrar artículo */
+.btn-delete-comment.custom {
+    background-color: #ff0000;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.btn-delete-comment.custom:hover {
+    background-color: #cc0000;
+}
+
+.btn-delete-comment.custom:active {
+    background-color: #990000;
+}
+
+.green-text {
+    color: #008CBA;
+    font-size: 16px;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.error-message {
+    color: #ff5555;
+    margin-bottom: 10px;
+}
+
+.success-message{
+    color: #2d0ec4;
+    margin-bottom: 10px;
+}
