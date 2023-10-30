@@ -48,6 +48,10 @@ function validarPasswordSignin($password, &$errors){
     
 }
 
+function validarEmailRestorePassword($email, &$errors){
+    validarEmailGeneral($email, $errors);
+}
+
 /**
  * validarEmailGeneral
  *
