@@ -207,5 +207,4 @@ function insertarToken($token, $connexio) {
     $statement->bindparam(':token', $token);
     $statement->execute();
 }
-
 ?> 

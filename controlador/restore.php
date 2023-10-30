@@ -18,8 +18,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])){
             $emailOK = true;
             $token = bin2hex(openssl_random_pseudo_bytes(16));
             insertarToken($token, $connexio);
-        }
-        
+            
+        }     
     }
 }
 
