@@ -142,6 +142,7 @@ h1 {
 
 /* Estilos para los botones específicos de cada formulario */
 .btn-signin,
+.btn-restore,
 .btn-login,
 .btn-return {
     background-color: #008CBA;
@@ -157,6 +158,7 @@ h1 {
 
 
 .btn-signin:hover,
+.btn-restore:hover,
 .btn-login:hover,
 .btn-return:hover {
     background-color: #006080;

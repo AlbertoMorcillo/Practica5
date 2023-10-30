@@ -35,6 +35,12 @@
                 <button type="submit" name="return" class="btn-return">Inicio</button>
             </form>
         </div>
+        <p class="green-text">¿No te acuerdas de tu contraseña?</p>
+            <div class="restore">
+                <form method="post" actio="../controlador/restore.php">
+                    <button type="submit" name="restore" class="btn-restore">Reiniciar contraseña</button>
+                </form>
+            </div>
     </div>
 </body>
 </html>

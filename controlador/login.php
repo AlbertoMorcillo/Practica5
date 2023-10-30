@@ -14,6 +14,7 @@ $validPassword = isset($_POST['password']) ? htmlspecialchars($_POST['password']
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
     include_once './validaciones.php';
 
+
     validarEmailLogin($validEmail, $errors);
     validarPasswordLogin($validPassword, $errors);
 
@@ -24,10 +25,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
         } else {
             $emailOK = true;
         }
+        $hash = obtenerHashContraseña($validEmail, $connexio);
         if ($emailOK) {
-            $_SESSION['email'] = $validEmail;
+            if(password_verify($validPassword, $hash)){
+                $_SESSION['email'] = $validEmail;
             header("Location: ./index_usuario_logged.php");
             exit();
+            }     
         } else {
             $errors .= "Hubo un error en el login. Por favor, inténtalo nuevamente.";
         }
