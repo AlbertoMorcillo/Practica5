@@ -202,4 +202,10 @@ function obtenerHashContraseña($email, $connexio) {
     return $result;
 }
 
-?>
+function insertarToken($token, $connexio) {
+    $statement = $connexio->prepare('INSERT INTO usuaris (token) VALUES (:token)');
+    $statement->bindparam(':token', $token);
+    $statement->execute();
+}
+
+?> 
