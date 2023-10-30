@@ -1,15 +1,14 @@
 <!DOCTYPE html>
-<!-- Created by: Alberto Morcillo -->
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Recuperar Contraseña</title>
     <link href="../estilo/Styles.css" rel="stylesheet">
 </head>
 <body class="login-page">
     <div class="login-form">
-        <h1>Login</h1>
+        <h1>Recuperar Contraseña</h1>
         <br>
         <?php if (isset($errors) && !empty($errors)) : ?>
         <div class="error-message">
@@ -17,12 +16,13 @@
         </div>
         <?php endif; ?>
 
-        <form action="login.php" method="post">
+        <p class="blue-text">Pon el correo electrónico y enviaremos un token.</p>
+        <br>
+    
+        <form action="restore.php" method="post">
             <label for="email">Email:</label>
             <input type="email" id="email" name="email" value="<?php echo htmlspecialchars($validEmail); ?>" autofocus>
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" value="<?php echo htmlspecialchars($validPassword); ?>">
-            <button type="submit" name="submit" class="btn-login">Login</button>
+            <button type="submit" name="submit" class="btn-restore">Recuperar</button>
         </form>
         <p class="green-text">¿No tienes una cuenta?</p>
         <div class="signin">
@@ -30,17 +30,17 @@
                 <button type="submit" name="signin" class="btn-signin">Registrarse</button>
             </form>
         </div>
+        <p class="green-text">¿Te acuerdas de la contraseña?</p>
+        <div class="login">
+            <form method="post" action="../controlador/login.php">
+                <button type="submit" name="signup" class="btn-login">Login</button>
+            </form>
+        </div>
         <div class="return">
             <form method="post" action="../controlador/index.php">
                 <button type="submit" name="return" class="btn-return">Inicio</button>
             </form>
         </div>
-        <p class="green-text">¿No te acuerdas de tu contraseña?</p>
-            <div class="restore">
-                <form method="post" action="../controlador/restore.php">
-                    <button type="submit" name="restore" class="btn-restore">Reiniciar contraseña</button>
-                </form>
-            </div>
     </div>
 </body>
 </html>
