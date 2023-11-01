@@ -8,7 +8,7 @@ $emailOK = false;
 
 $validEmail = isset($_POST['email']) ? htmlspecialchars($_POST['email']) : '';
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submitd'])){
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])){
     include_once './validaciones.php';
 
     validarEmailRestorePassword($validEmail, $errors);
@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submitd'])){
         } else {
             $emailOK = true;
             $token = bin2hex(openssl_random_pseudo_bytes(16));
-            insertarToken($token, $connexio);
+            insertarToken($token, $validEmail, $connexio);
             require '../PHPMailer/src/Exception.php';
             require '../PHPMailer/src/PHPMailer.php';
             require '../PHPMailer/src/SMTP.php';
@@ -33,13 +33,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submitd'])){
                 $mail->isSMTP();
                 $mail->Host = 'smtp.gmail.com';
                 $mail->SMTPAuth = true;
-                $mail->Username = 'informaticomondongo@gmail.com';
-                $mail->Password = 'dyoz fyiu wyzz nxca';
+                $mail->Username = 'informaticomondongo2@gmail.com';
+                $mail->Password = 'gnjyqszopmwbjakt';
                 $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
                 $mail->Port = 465;                                    
 
                 //Recipients
-                $mail->setFrom('informaticomondongo@gmail.com', 'Mondongo');
+                $mail->setFrom('informaticomondongo2@gmail.com', 'Mondongo');
                 $mail->addAddress($validEmail);
                 $mail->isHTML(true);
                 $mail->Subject = 'Restablecer contraseña';
@@ -47,9 +47,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submitd'])){
                 $mail->AltBody = 'Para restablecer tu contraseña, utiliza el siguiente enlace: http://tudominio.com/restablecer.php?token=' . $token;
 
                 $mail->send();
-                echo 'Message has been sent';
+                echo 'Enviado correctamente.';
             } catch (Exception $e) {
-                echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+                echo "Error al enviar: {$mail->ErrorInfo}";
             }
         }     
     }
