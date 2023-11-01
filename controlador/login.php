@@ -31,6 +31,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
                 $_SESSION['email'] = $validEmail;
             header("Location: ./index_usuario_logged.php");
             exit();
+            }
+            if(!password_verify($validPassword, $hash)){
+                $errors .= 'Contraseña equivocada.';
             }     
         } else {
             $errors .= "Hubo un error en el login. Por favor, inténtalo nuevamente.";
