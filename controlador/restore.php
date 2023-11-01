@@ -2,16 +2,13 @@
     use PHPMailer\PHPMailer\PHPMailer;
     use PHPMailer\PHPMailer\SMTP;
     use PHPMailer\PHPMailer\Exception;
-    require '../PHPMailer/src/Exception.php';
-    require '../PHPMailer/src/PHPMailer.php';
-    require '../PHPMailer/src/SMTP.php';
 
 $errors = '';
 $emailOK = false;
 
 $validEmail = isset($_POST['email']) ? htmlspecialchars($_POST['email']) : '';
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])){
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submitd'])){
     include_once './validaciones.php';
 
     validarEmailRestorePassword($validEmail, $errors);
@@ -24,8 +21,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])){
             $emailOK = true;
             $token = bin2hex(openssl_random_pseudo_bytes(16));
             insertarToken($token, $connexio);
-            //Load Composer's autoloader
-            require '../vendor/autoload.php';
+            require '../PHPMailer/src/Exception.php';
+            require '../PHPMailer/src/PHPMailer.php';
+            require '../PHPMailer/src/SMTP.php';
 
             //Create an instance; passing `true` enables exceptions
             $mail = new PHPMailer(true);
