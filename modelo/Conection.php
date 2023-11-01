@@ -209,4 +209,12 @@ function insertarToken($token, $email, $connexio) {
     $statement->execute();
 }
 
+function getUserByToken($token, $connexio){
+    $statement = $connexio->prepare('SELECT email FROM usuaris WHERE token = :token');
+    $statement->bindValue(':token', $token);
+    $statement->execute();
+
+    return $statement->fetch(PDO::FETCH_ASSOC);
+}
+
 ?> 
