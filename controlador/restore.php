@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])){
             $mail = new PHPMailer(true);
 
             try {
-                $mail->SMTPDebug = SMTP::DEBUG_SERVER;
+                $mail->SMTPDebug = 0; //SMTP::DEBUG_SERVER; 0 para que no salga el debugador en la pantalla
                 $mail->isSMTP();
                 $mail->Host = 'smtp.gmail.com';
                 $mail->SMTPAuth = true;
@@ -43,8 +43,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])){
                 $mail->addAddress($validEmail);
                 $mail->isHTML(true);
                 $mail->Subject = 'Restablecer contraseña';
-                $mail->Body    = 'Para restablecer tu contraseña, utiliza el siguiente enlace: <a href="http://tudominio.com/restablecer.php?token=' . $token . '">Restablecer contraseña</a>';
-                $mail->AltBody = 'Para restablecer tu contraseña, utiliza el siguiente enlace: http://tudominio.com/restablecer.php?token=' . $token;
+                $mail->Body    = 'Para restablecer tu contraseña, utiliza el siguiente enlace: <a href="http://localhost/BACKEND/PRACTICAS/UF2/Practica5/controlador/restore_confirm.php?token=' . $token . '">Restablecer contraseña</a>';
+                $mail->AltBody = 'Para restablecer tu contraseña, utiliza el siguiente enlace: http://localhost/BACKEND/PRACTICAS/UF2/Practica5/controlador/restore_confirm.php?token=' . $token;
 
                 $mail->send();
                 echo 'Enviado correctamente.';
