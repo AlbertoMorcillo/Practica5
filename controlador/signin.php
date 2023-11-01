@@ -5,8 +5,8 @@ $errors = '';
 $insertadoCorrectamente = false;
 
 $validEmail = isset($_POST['email']) ? htmlspecialchars($_POST['email']) : '';
-$validPassword = isset($_POST['password']) ? $_POST['password'] : '';
-$validPasswordRepetida = isset($_POST['passwordRepetida']) ? $_POST['passwordRepetida'] : '';
+$validPassword = isset($_POST['password']) ? htmlspecialchars($_POST['password'])  : '';
+$validPasswordRepetida = isset($_POST['passwordRepetida']) ? htmlspecialchars( $_POST['passwordRepetida']) : '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['submit'])) {
