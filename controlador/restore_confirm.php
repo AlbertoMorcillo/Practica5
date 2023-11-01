@@ -27,8 +27,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
             require_once '../modelo/Conection.php';
             $hashedPassword = password_hash($validPassword, PASSWORD_DEFAULT);
             $insertadoCorrectamente = updatePassword($email, $hashedPassword, $connexio);
+        }
+
+        if ($insertadoCorrectamente) {
+            //TODO: O hacer que se logee automaticamente o llevaré al login.php para que el mismo se loguee.
 
         }
+
     }
 }
 
