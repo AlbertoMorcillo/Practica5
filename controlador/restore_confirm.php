@@ -30,10 +30,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
         }
 
         if ($insertadoCorrectamente) {
-            //TODO: O hacer que se logee automaticamente o llevaré al login.php para que el mismo se loguee.
-
+            header('Location: ./login.php');
+            exit();
         }
-
     }
 }
 
