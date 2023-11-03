@@ -16,7 +16,7 @@
         </div>
         <?php endif; ?>
 
-        <form action="restore_confirm.php" method="post">
+        <form action="restore_confirm.php" method="POST">
             <label for="password">Password:</label>
             <input type="password" id="password" name="password" value="<?php echo htmlspecialchars($validPassword); ?>" autofocus>
             <label for="passwordRepetida">Vuelva a escribir la contraseña:</label>
@@ -25,7 +25,7 @@
         </form>
         <p class="green-text">¿Has cambiado de opinión?</p>
         <div class="return">
-            <form method="post" action="../controlador/index.php">
+            <form method="POST" action="../controlador/index.php">
                 <button type="submit" name="return" class="btn-return">Inicio</button>
             </form>
         </div>

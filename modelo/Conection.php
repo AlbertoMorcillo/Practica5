@@ -210,21 +210,31 @@ function insertarToken($token, $email, $connexio) {
 }
 
 function getUserByToken($token, $connexio) {
-    $statement = $connexio->prepare('SELECT email FROM usuaris WHERE token = :token');
-    $statement->bindValue(':token', $token);
-    $statement->execute();
+    try{
+        $statement = $connexio->prepare('SELECT email FROM usuaris WHERE token = :token');
+        $statement->bindValue(':token', $token);
+        $statement->execute();
+    
+      $resultado = $statement->fetchAll();
+        foreach($resultado as $fila){
+            $email = $fila['email'];
+        }
+        return $email;
 
-    return $statement->fetch(PDO::FETCH_ASSOC);
+    } catch (PDOException $e) {
+        die('Patata');
+    }
+   
 }
 
 function updatePassword($email, $password, $connexio) {
     try {
-        $statement = $connexio->prepare('UPDATE usuaris SET contrasena = :password WHERE email = :email');
-        $statement->bindParam(':password', $password);
+        echo'entraAUpdatePassword';
+        $statement = $connexio->prepare('UPDATE usuaris SET contrasena = :contrasena WHERE email = :email');
+        $statement->bindParam(':contrasena', $password);
         $statement->bindParam(':email', $email);
         $statement->execute();
-         return true;
-
+        return true;
     } catch (PDOException $e){
         return false;
     }

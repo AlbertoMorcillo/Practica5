@@ -82,6 +82,7 @@ function validarEmailGeneral($email, &$errors){
  * @return void
  */
 function validarPasswordGeneral($password, &$errors) {
+    echo'validarPasswordGeneral';
     if (empty($password)){
         $errors .= 'La contraseña no puede estar vacía.<br>';
     } else {
@@ -112,6 +113,7 @@ function validarPasswordGeneral($password, &$errors) {
  * @return void
  */
 function validarPasswordRepetida($password, &$errors, $passwordRepetida){
+    echo 'validarPasswordRepetida';
     if(empty($passwordRepetida)){
         $errors .= 'El campo de repetir contraseña no puede estar vacío.<br>';
     }
