@@ -13,7 +13,7 @@ if(isset($_GET['token'])){
     
 }
 $user = getUserByToken($_SESSION['token'], $connexio);
-echo $user;
+
 
 
 if ($user) {
@@ -39,7 +39,7 @@ if ($user) {
         }
     }
 } else {
-    echo'aaaaaa';
+    header('Location: ./invalid_token.php');
 }
 
 include_once '../vista/restore_confirm_view.php';
