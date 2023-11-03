@@ -52,6 +52,11 @@ function validarEmailRestorePassword($email, &$errors){
     validarEmailGeneral($email, $errors);
 }
 
+function validarPasswordRestore($password, &$errors){
+    validarPasswordGeneral($password, $errors);
+    
+}
+
 /**
  * validarEmailGeneral
  *
@@ -156,5 +161,6 @@ function validarArticuloBorrar($articuloBorrado, $userId, &$errors, $connexio){
     }
 }
 
+// Validar si la contraseña no esta repetida en la base de datos.
 
 ?>

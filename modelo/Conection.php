@@ -218,10 +218,16 @@ function getUserByToken($token, $connexio) {
 }
 
 function updatePassword($email, $password, $connexio) {
-    $statement = $connexio->prepare('UPDATE usuaris SET contrasena = :password WHERE email = :email');
-    $statement->bindParam(':password', $password);
-    $statement->bindParam(':email', $email);
-    $statement->execute();
+    try {
+        $statement = $connexio->prepare('UPDATE usuaris SET contrasena = :password WHERE email = :email');
+        $statement->bindParam(':password', $password);
+        $statement->bindParam(':email', $email);
+        $statement->execute();
+         return true;
+
+    } catch (PDOException $e){
+        return false;
+    }
 }
 
 ?> 

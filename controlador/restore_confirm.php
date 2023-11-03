@@ -6,11 +6,11 @@ require_once '../modelo/Conection.php';
 // Get the token from the URL
 $token = isset($_GET['token']) ? $_GET['token'] : null;
 $validPassword = isset($_POST['password']) ? htmlspecialchars($_POST['password'])  : '';
-$validPasswordRepetida = isset($_POST['passwordRepetida']) ? htmlspecialchars( $_POST['passwordRepetida']) : '';
+$validPasswordRepetida = isset($_POST['passwordRepetida']) ? htmlspecialchars($_POST['passwordRepetida']) : '';
 
 $user = getUserByToken($token, $connexio);
 
-if ($user === false) {
+if ($user == false) {
     header("Location: ./invalid_token.php");
     exit();
 }
@@ -20,7 +20,7 @@ $email = $user['email'];
 if ($_SERVER['REQUEST_METHOD'] === 'POST'){
     if (isset($_POST['submit'])){
         include_once './validaciones.php';
-        validarPasswordSignin($validPassword, $errors);
+        validarPasswordRestore($validPassword, $errors);
         validarPasswordRepetida($validPassword, $errors, $validPasswordRepetida);
         
         if (empty($errors)) {
@@ -32,6 +32,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
         if ($insertadoCorrectamente) {
             header('Location: ./login.php');
             exit();
+        } else {
+            $errors .= "Hubo un error al actualizar la contraseña. Por favor, intenta nuevamente.";
         }
     }
 }
