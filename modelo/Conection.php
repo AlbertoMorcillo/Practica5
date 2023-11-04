@@ -229,7 +229,6 @@ function getUserByToken($token, $connexio) {
 
 function updatePassword($email, $password, $connexio) {
     try {
-        echo'entraAUpdatePassword';
         $statement = $connexio->prepare('UPDATE usuaris SET contrasena = :contrasena WHERE email = :email');
         $statement->bindParam(':contrasena', $password);
         $statement->bindParam(':email', $email);
