@@ -65,5 +65,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
     }
 }
 
+// ID Cliente: 890609144903-ki0pmnluglrfv3s1c1btsji594vr142f.apps.googleusercontent.com
+// Secreto del cliente: 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
+
 include_once '../vista/login_view.php';
 ?>
