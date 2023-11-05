@@ -23,8 +23,10 @@
             <input type="email" id="email" name="email" value="<?php echo htmlspecialchars($validEmail); ?>" autofocus>
             <label for="password">Password:</label>
             <input type="password" id="password" name="password" value="<?php echo htmlspecialchars($validPassword); ?>">
-            <div class="g-recaptcha" data-sitekey="6LdknPUoAAAAAFwoKyfOfeWpN3p_U2Tc7IYlMYib"></div>
-			<br>
+            <?php if (isset($_SESSION['contadorErrorPass']) && $_SESSION['contadorErrorPass'] >= 3): ?>
+                <div class="g-recaptcha" data-sitekey="6LdknPUoAAAAAFwoKyfOfeWpN3p_U2Tc7IYlMYib"></div>
+            <?php endif; ?>
+            <br>
             <button type="submit" name="submit" class="btn-login">Login</button>
         </form>
         <p class="green-text">¿No tienes una cuenta?</p>

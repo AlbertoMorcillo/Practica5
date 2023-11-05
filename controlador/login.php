@@ -3,13 +3,14 @@
 session_set_cookie_params(25 * 60); // Establecer el tiempo de la sesión en 25 minutos
 session_start(); // Llama a session_start solo una vez y al principio del archivo
 
-
-
-
+// Comprueba si la clave 'contadorErrorPass' existe en la matriz $_SESSION
+// Si no existe, inicialízala a 0
+if (!isset($_SESSION['contadorErrorPass'])) {
+    $_SESSION['contadorErrorPass'] = 0;
+}
 $errors = '';
 $emailOK = false;
-$contadorErrorPass = 0;
-$secretkey = '6LdknPUoAAAAAAJv6Mv3G0IkMIanJxe8ayV-PIfE';
+$secretKey = '6LdknPUoAAAAAAJv6Mv3G0IkMIanJxe8ayV-PIfE';
 
 // Variables para almacenar valores válidos
 $validEmail = isset($_POST['email']) ? htmlspecialchars($_POST['email']) : '';
@@ -32,29 +33,32 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
         }
         $hash = obtenerHashContraseña($validEmail, $connexio);
         if ($emailOK) {
-            if(password_verify($validPassword, $hash)){
-                $_SESSION['email'] = $validEmail;
-                header("Location: ./index_usuario_logged.php");
-                exit();
-            }
-            if(!password_verify($validPassword, $hash)){
+            if (password_verify($validPassword, $hash)) {
+                if ($_SESSION['contadorErrorPass'] >= 3 && !$captcha) {
+                    $errors .= 'Por favor, verifica el captcha.';
+                } else {
+                    $_SESSION['email'] = $validEmail;
+                    $_SESSION['contadorErrorPass'] = 0;
+                    header("Location: ./index_usuario_logged.php");
+                    exit();
+                }
+            } else {
                 $_SESSION['contadorErrorPass']++;
                 $errors .= 'Contraseña equivocada.';
-                if($_SESSION['contadorErrorPass'] === 3){
-                    if(!$captcha){
-                        echo 'Por favor, verifica el captcha';
+                if ($_SESSION['contadorErrorPass'] >= 3) {
+                    if (!$captcha) {
+                        $errors .= 'Por favor, verifica el captcha.';
                     } else {
                         $response = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=$secretkey&response=$captcha");
                         $decodedResponse = json_decode($response, TRUE);
-                        if($decodedResponse['success'])
-                        {
-                            echo '<h2>Thanks</h2>';
+                        if ($decodedResponse['success']) {
+                            $_SESSION['contadorErrorPass'] = 0;
                         } else {
-                            echo '<h3>Error al comprobar Captcha </h3>';
+                            $errors .= 'Error al comprobar Captcha.';
                         }
                     }
                 }
-            }     
+            }
         } else {
             $errors .= "Hubo un error en el login. Por favor, inténtalo nuevamente.";
         }
