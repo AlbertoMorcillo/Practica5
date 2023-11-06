@@ -32,6 +32,10 @@ class ComposerStaticInitebda91f5643b684e5f1d84addd6b9e69
         array (
             'Monolog\\' => 8,
         ),
+        'H' => 
+        array (
+            'Hybridauth\\' => 11,
+        ),
         'G' => 
         array (
             'GuzzleHttp\\Psr7\\' => 16,
@@ -76,6 +80,10 @@ class ComposerStaticInitebda91f5643b684e5f1d84addd6b9e69
         'Monolog\\' => 
         array (
             0 => __DIR__ . '/..' . '/monolog/monolog/src/Monolog',
+        ),
+        'Hybridauth\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/hybridauth/hybridauth/src',
         ),
         'GuzzleHttp\\Psr7\\' => 
         array (

@@ -1,12 +1,12 @@
 <?php
 
-require_once 'vendor/autoload.php';
+require_once '../vendor/autoload.php';
  
 $config = [
-    'callback' => 'YOUR_DOMAIN_URL/index.php',
+    'callback' => 'http://localhost/BACKEND/PRACTICAS/UF2/Practica5/controlador/index_usuario_logged.php',
     'keys'     => [
-                    'id' => 'YOUR_CLIENT_ID',
-                    'secret' => 'YOUR_CLIENT_SECRET'
+                    'id' => '890609144903-ki0pmnluglrfv3s1c1btsji594vr142f.apps.googleusercontent.com',
+                    'secret' => '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'
                 ],
     'scope'    => 'https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email',
     'authorize_url_parameters' => [

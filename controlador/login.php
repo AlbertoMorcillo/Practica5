@@ -3,6 +3,7 @@
 session_set_cookie_params(25 * 60); // Establecer el tiempo de la sesión en 25 minutos
 session_start(); // Llama a session_start solo una vez y al principio del archivo
 
+
 // Comprueba si la clave 'contadorErrorPass' existe en la matriz $_SESSION
 // Si no existe, inicialízala a 0
 if (!isset($_SESSION['contadorErrorPass'])) {
@@ -63,7 +64,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
             $errors .= "Hubo un error en el login. Por favor, inténtalo nuevamente.";
         }
     }
-}
+} elseif (isset($_POST['submit2'])) {
+        // Código para manejar el inicio de sesión con Google
+        require_once '../modelo/configuration.php';
+
+        try {
+            $adapter->authenticate();
+            $userProfile = $adapter->getUserProfile();
+            $_SESSION['email'] = $userProfile->email;
+            header("Location: ./index_usuario_logged.php");
+            exit();
+        }
+        catch( Exception $e ){
+            echo $e->getMessage() ;
+        }
+    }
 
 // ID Cliente: 890609144903-ki0pmnluglrfv3s1c1btsji594vr142f.apps.googleusercontent.com
 // Secreto del cliente: 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
