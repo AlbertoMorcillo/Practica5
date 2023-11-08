@@ -1,6 +1,7 @@
 <?php
 
 require_once '../vendor/autoload.php';
+
  
 $config = [
     'callback' => 'http://localhost/BACKEND/PRACTICAS/UF2/Practica5/controlador/index_usuario_logged.php',

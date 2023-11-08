@@ -54,7 +54,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
                         $decodedResponse = json_decode($response, TRUE);
                         if ($decodedResponse['success']) {
                             $_SESSION['contadorErrorPass'] = 0;
-                            
+
                         } else {
                             $errors .= 'Error al comprobar Captcha.';
                         }
@@ -65,21 +65,45 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
             $errors .= "Hubo un error en el login. Por favor, inténtalo nuevamente.";
         }
     }
-} elseif (isset($_POST['submit2'])) {
-        // Código para manejar el inicio de sesión con Google
-        require_once '../modelo/configuration.php';
+}  if (isset($_POST['submit2'])) {
+    require_once '../modelo/configuration.php';
+    try {
+        echo'Entro en el submit2';
+        $adapter->authenticate();
+        $userProfile = $adapter->getUserProfile();
+        $email = $userProfile->email; // Obtener el correo electrónico del usuario
 
-        try {
-            $adapter->authenticate();
-            $userProfile = $adapter->getUserProfile();
-            $_SESSION['email'] = $userProfile->email;
+        // Verificar si el correo electrónico ya existe en la base de datos
+        if (!validarEmailExistente($email, $connexio)) {
+            echo'valido si el email existe';
+            // Si el correo electrónico no existe, insertar el nuevo usuario en la base de datos
+            if (insertarUsuarioHybridAuth($email, $connexio)) {
+                echo' he entrado en que si el correo no existe inserto';
+                // Iniciar sesión para el nuevo usuario
+                $_SESSION['email'] = $email;
+                $_SESSION["usuari_id"] = getUserId($email, $connexio);
+
+                // Redirigir al usuario a la página de inicio del usuario logueado
+                header("Location: ./index_usuario_logged.php");
+                exit();
+            } else {
+                // Manejar el error si la inserción del usuario falla
+                $errors .= "Error al insertar el usuario.";
+            }
+        } else {
+            // Si el correo electrónico ya existe en la base de datos, iniciar sesión para el usuario existente
+            $_SESSION['email'] = $email;
+            $_SESSION["usuari_id"] = getUserId($email, $connexio);
+
+            // Redirigir al usuario a la página de inicio del usuario logueado
             header("Location: ./index_usuario_logged.php");
             exit();
         }
-        catch( Exception $e ){
-            echo $e->getMessage() ;
-        }
+    } catch (Exception $e) {
+        echo $e->getMessage();
     }
+}
+
 
 // ID Cliente: 890609144903-ki0pmnluglrfv3s1c1btsji594vr142f.apps.googleusercontent.com
 // Secreto del cliente: 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

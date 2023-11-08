@@ -89,16 +89,19 @@ function insertarUsuario($email, $password, $connexio){
     }
 }
 
+
 function insertarUsuarioHybridAuth($email, $connexio){
     try {
-        $statement = $connexio->prepare('INSERT INTO usuaris (email) VALUES (:email)');
-        $statement->execute(array(':email' => $email));
+        $defaultPassword = 'defaultpassword';
+        $statement = $connexio->prepare('INSERT INTO usuaris (email, contrasena) VALUES (:email, :contrasena)');
+        $statement->execute(array(':email' => $email, ':contrasena' => $defaultPassword));
         return true; // Inserción exitosa
     } catch (PDOException $e) {
-        echo "Error al insertar el usuario via Auth: " . $e->getMessage();
-        return false; // Inserción fallida
+        // Lanza una excepción personalizada con el mensaje de error
+        throw new Exception("Error al insertar el usuario via Auth: " . $e->getMessage());
     }
 }
+
 
 /**
  * insertarArticulo
