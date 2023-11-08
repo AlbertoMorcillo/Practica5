@@ -84,7 +84,18 @@ function insertarUsuario($email, $password, $connexio){
         $statement->execute(array(':email' => $email, ':contrasena' => $password));
         return true; // Inserción exitosa
     } catch (PDOException $e) {
-        // Error al insertar, puedes manejar el error aquí si es necesario
+        echo "Error al insertar el usuario: " . $e->getMessage();
+        return false; // Inserción fallida
+    }
+}
+
+function insertarUsuarioHybridAuth($email, $connexio){
+    try {
+        $statement = $connexio->prepare('INSERT INTO usuaris (email) VALUES (:email)');
+        $statement->execute(array(':email' => $email));
+        return true; // Inserción exitosa
+    } catch (PDOException $e) {
+        echo "Error al insertar el usuario via Auth: " . $e->getMessage();
         return false; // Inserción fallida
     }
 }

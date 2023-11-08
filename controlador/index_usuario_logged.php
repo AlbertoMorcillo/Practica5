@@ -46,19 +46,24 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 } elseif (isset($_POST['submit'])) {
 
     require_once '../modelo/configuration.php';
+    require_once '../modelo/Conection.php';
 
-try {
-    $adapter->authenticate();
-    $userProfile = $adapter->getUserProfile();
-    session_destroy();
-    header('location: ./index.php');
-}
-catch( Exception $e ){
-    echo $e->getMessage() ;
-}
+    try {
+        $adapter->authenticate();
+        $userProfile = $adapter->getUserProfile();
+        // Obtener la información del usuario
+        $email = $userProfile->email;
+        // $firstName = $userProfile->firstName;
+        // $lastName = $userProfile->lastName;
+        insertarUsuarioHybridAuth($email, $connexio);
+        session_destroy();
+        header('location: ./index.php');
+    }
+    catch( Exception $e ){
+        echo $e->getMessage() ;
+    }
 
 }
-
 
 /**
  * mostrarArticulos
