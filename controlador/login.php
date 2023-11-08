@@ -54,6 +54,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
                         $decodedResponse = json_decode($response, TRUE);
                         if ($decodedResponse['success']) {
                             $_SESSION['contadorErrorPass'] = 0;
+                            
                         } else {
                             $errors .= 'Error al comprobar Captcha.';
                         }

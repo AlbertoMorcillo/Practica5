@@ -1,4 +1,5 @@
 <?php
+
 //Created by: Alberto Morcillo
 // Iniciar la sesión
 session_start();
@@ -42,7 +43,22 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $errors .= 'Ha habido un problema para borrar.';
         }
     }
+} elseif (isset($_POST['submit'])) {
+
+    require_once '../modelo/configuration.php';
+
+try {
+    $adapter->authenticate();
+    $userProfile = $adapter->getUserProfile();
+    session_destroy();
+    header('location: ./index.php');
 }
+catch( Exception $e ){
+    echo $e->getMessage() ;
+}
+
+}
+
 
 /**
  * mostrarArticulos
