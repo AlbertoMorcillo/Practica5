@@ -4,7 +4,7 @@ require_once '../vendor/autoload.php';
 
  
 $config = [
-    'callback' => 'http://localhost/BACKEND/PRACTICAS/UF2/Practica5/controlador/index_usuario_logged.php',
+    'callback' => 'http://localhost/BACKEND/PRACTICAS/UF2/Practica5/controlador/callback.php',
     'keys'     => [
                     'id' => '890609144903-ki0pmnluglrfv3s1c1btsji594vr142f.apps.googleusercontent.com',
                     'secret' => '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'
