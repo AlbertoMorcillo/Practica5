@@ -66,7 +66,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
         }
     }
 }  elseif ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit2'])) {
+    
     require_once './loginHybridOauthGoogle.php';
+    
 }
 
 
