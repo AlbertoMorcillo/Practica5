@@ -32,6 +32,10 @@ class ComposerStaticInitebda91f5643b684e5f1d84addd6b9e69
         array (
             'Monolog\\' => 8,
         ),
+        'L' => 
+        array (
+            'League\\OAuth2\\Client\\' => 21,
+        ),
         'H' => 
         array (
             'Hybridauth\\' => 11,
@@ -80,6 +84,10 @@ class ComposerStaticInitebda91f5643b684e5f1d84addd6b9e69
         'Monolog\\' => 
         array (
             0 => __DIR__ . '/..' . '/monolog/monolog/src/Monolog',
+        ),
+        'League\\OAuth2\\Client\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/league/oauth2-client/src',
         ),
         'Hybridauth\\' => 
         array (
