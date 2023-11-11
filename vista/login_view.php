@@ -29,6 +29,7 @@
             <br>
             <button type="submit" name="submit" class="btn-login">Login</button>
             <button type="submit" name="submit2" class="btn-google">Iniciar sesión con Google</button>
+            <button type="submit" name="submit3" class="btn-github">Iniciar sesión con GitHub</button>
         </form>
         <p class="green-text">¿No tienes una cuenta?</p>
         <div class="signin">

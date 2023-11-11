@@ -166,6 +166,16 @@ h1 {
     text-decoration: none;
 }
 
+.btn-github {
+    display: inline-block;
+    margin-top: 10px;
+    background-color: #030507;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
 .btn-signin:hover,
 .btn-restore:hover,
 .btn-login:hover,
