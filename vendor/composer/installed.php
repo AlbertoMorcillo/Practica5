@@ -100,6 +100,15 @@
             'aliases' => array(),
             'dev_requirement' => false,
         ),
+        'league/oauth2-github' => array(
+            'pretty_version' => '3.1.0',
+            'version' => '3.1.0.0',
+            'reference' => '97f31cd70e76f81e8f5b4e2ab6f3708e2db7ac18',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../league/oauth2-github',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
         'monolog/monolog' => array(
             'pretty_version' => '3.5.0',
             'version' => '3.5.0.0',

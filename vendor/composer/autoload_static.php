@@ -88,6 +88,7 @@ class ComposerStaticInitebda91f5643b684e5f1d84addd6b9e69
         'League\\OAuth2\\Client\\' => 
         array (
             0 => __DIR__ . '/..' . '/league/oauth2-client/src',
+            1 => __DIR__ . '/..' . '/league/oauth2-github/src',
         ),
         'Hybridauth\\' => 
         array (

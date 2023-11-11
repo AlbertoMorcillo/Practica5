@@ -1,7 +1,7 @@
 <?php
 //Created by: Alberto Morcillo
 session_set_cookie_params(25 * 60); // Establecer el tiempo de la sesión en 25 minutos
-session_start(); // Llama a session_start solo una vez y al principio del archivo
+session_start(); 
 
 
 // Comprueba si la clave 'contadorErrorPass' existe en la matriz $_SESSION
@@ -65,10 +65,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
             $errors .= "Hubo un error en el login. Por favor, inténtalo nuevamente.";
         }
     }
-}  elseif ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit2'])) {
-    
-    require_once './loginHybridOauthGoogle.php';
-    
+}  elseif ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit2'])) { 
+    require_once './loginHybridOauthGoogle.php';    
+} elseif ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit3'])){
+    require_once './loginOauth2Github.php';
 }
 
 
