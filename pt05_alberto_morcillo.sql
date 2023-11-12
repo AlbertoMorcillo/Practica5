@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 03-11-2023 a las 16:42:07
+-- Tiempo de generación: 12-11-2023 a las 17:48:18
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -37,7 +37,7 @@ CREATE TABLE IF NOT EXISTS `articles` (
   `usuari_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`article_id`),
   KEY `usuari_id` (`usuari_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=50 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `articles`
@@ -81,7 +81,8 @@ INSERT INTO `articles` (`article_id`, `titulo`, `article`, `usuari_id`) VALUES
 (41, '', 'a', 3),
 (42, '', 'a', 3),
 (43, '', 'a', 3),
-(48, '', 'a', 3);
+(48, '', 'a', 3),
+(50, NULL, 'asdad', 13);
 
 -- --------------------------------------------------------
 
@@ -97,7 +98,7 @@ CREATE TABLE IF NOT EXISTS `usuaris` (
   `token` text NOT NULL,
   PRIMARY KEY (`usuari_id`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `usuaris`
@@ -113,7 +114,8 @@ INSERT INTO `usuaris` (`usuari_id`, `email`, `contrasena`, `token`) VALUES
 (9, 'pepito@gmail.com', '$2y$10$g.OgOBB4g71VtQZx0GsSUOIJjq4c3fM4P.VHIXCyMnV5xcmonrxa6', ''),
 (11, 'rand@gmail.com', '$2y$10$hcBl2AWIIJfYiFVeU74ROOaDw.B4rumV93D2KbzEdM0od6CO9vroO', ''),
 (12, 'admin@gmail.com', '$2y$10$fZlHMayi1iq9eEUT62oqf./wICMVgI/5dsRmRm6CdJHygufuaX1wG', ''),
-(13, 'a.morcillo@sapalomera.cat', '$2y$10$Nskb8eZL9cwnpfh8x0MYXOuBh0f2/HmxdCh7UKRieyU06yU150sWe', '0e42dfc1c9ecf78504a1abce71efb81f');
+(13, 'a.morcillo@sapalomera.cat', '$2y$10$Srj8Pd9FS0gpIyQMcHXbQuL9fm6voXw8/DagIFGC6.VGiDykko1BW', '6877b8f72a0c635c6cfb2aecccfb14b5'),
+(16, 'asasas@gmail.com', '$2y$10$RO9tdNSMKk38Sk9ZT9Lh5epvezKnXDGvSKhUQojqSvCKNn3pN1NOS', '');
 
 --
 -- Restricciones para tablas volcadas
