@@ -1,4 +1,5 @@
 <?php
+//Created by Alberto Morcillo
     use PHPMailer\PHPMailer\PHPMailer;
     use PHPMailer\PHPMailer\SMTP;
     use PHPMailer\PHPMailer\Exception;

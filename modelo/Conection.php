@@ -43,6 +43,7 @@ function calcularTotalPaginas($connexio, $cantidad_articulos_por_pagina){
 
 /**
  * comprobarUsuarioExistente
+ * Comprobación de si el usuario existe.
  *
  * @param  mixed $connexio a la base de datos
  * @param  mixed $email email a comprobar
@@ -58,7 +59,7 @@ function comprobarUsuarioExistente($connexio, $email){
 
 /**
  * validarEmailExistente
- *
+ *Validar si el email existe
  * @param  mixed $email email a validar
  * @param  mixed $connexio a la base de datos
  * @return void
@@ -90,6 +91,13 @@ function insertarUsuario($email, $password, $connexio){
 }
 
 
+/**
+ * insertarUsuarioHybridAuth
+ *Sirve para insertar los usuarios logeados por el hybridoauth a la base de datos.
+ * @param  mixed $email
+ * @param  mixed $connexio
+ * @return void
+ */
 function insertarUsuarioHybridAuth($email, $connexio){
     try {
         $defaultPassword = 'defaultpassword';
@@ -216,6 +224,14 @@ function obtenerHashContraseña($email, $connexio) {
     return $result;
 }
 
+/**
+ * insertarToken
+ *Sirve para insertar el token a la base de datos
+ * @param  mixed $token
+ * @param  mixed $email
+ * @param  mixed $connexio
+ * @return void
+ */
 function insertarToken($token, $email, $connexio) {
     $statement = $connexio->prepare('UPDATE usuaris SET token = :token WHERE email = :email');
     $statement->bindparam(':token', $token);
@@ -223,6 +239,13 @@ function insertarToken($token, $email, $connexio) {
     $statement->execute();
 }
 
+/**
+ * getUserByToken
+ *Srive para obtener el email del usuario a través del token
+ * @param  mixed $token
+ * @param  mixed $connexio
+ * @return void
+ */
 function getUserByToken($token, $connexio) {
     try{
         $statement = $connexio->prepare('SELECT email FROM usuaris WHERE token = :token');
@@ -241,6 +264,14 @@ function getUserByToken($token, $connexio) {
    
 }
 
+/**
+ * updatePassword
+ *Sirve para actualizar la contraseña
+ * @param  mixed $email
+ * @param  mixed $password
+ * @param  mixed $connexio
+ * @return void
+ */
 function updatePassword($email, $password, $connexio) {
     try {
         $statement = $connexio->prepare('UPDATE usuaris SET contrasena = :contrasena WHERE email = :email');

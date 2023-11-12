@@ -1,4 +1,5 @@
 <?php
+//Created BY: Alberto Morcillo
 
 require_once '../vendor/autoload.php';
 require_once '../modelo/Conection.php';
@@ -43,6 +44,7 @@ if (!isset($_GET['code'])) {
     }
 }
 
+//El código comentado es por si funcionaba insertar el usuario. Por ahora esta desactivado esa función.
 // session_start(); // Iniciar la sesión
 
 // require_once '../vendor/autoload.php';

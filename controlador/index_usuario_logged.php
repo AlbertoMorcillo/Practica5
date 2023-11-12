@@ -1,5 +1,4 @@
 <?php
-
 //Created by: Alberto Morcillo
 // Iniciar la sesión
 session_start();
@@ -67,7 +66,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
 /**
  * mostrarArticulos
- *
+ *Mostrar los diferentes articulos que hay guardados
  * @param  mixed $connexio a la base de datos
  * @param  mixed $start desde donde empieza
  * @param  mixed $cantidad_articulos_por_pagina 

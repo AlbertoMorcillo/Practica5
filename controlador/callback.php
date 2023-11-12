@@ -1,4 +1,5 @@
 <?php
+//Created by Alberto Morcillo
 require_once '../modelo/configuration.php';
 require_once '../modelo/Conection.php';
 

@@ -1,5 +1,5 @@
 <?php
-
+//Created by Alberto Morcillo
 require_once '../modelo/configuration.php';
 try {
     $adapter->authenticate();
