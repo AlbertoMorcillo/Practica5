@@ -128,9 +128,9 @@
             'dev_requirement' => false,
         ),
         'paragonie/random_compat' => array(
-            'pretty_version' => 'v9.99.100',
-            'version' => '9.99.100.0',
-            'reference' => '996434e5492cb4c3edcb9168db6fbb1359ef965a',
+            'pretty_version' => 'v2.0.21',
+            'version' => '2.0.21.0',
+            'reference' => '96c132c7f2f7bc3230723b66e89f8f150b29d5ae',
             'type' => 'library',
             'install_path' => __DIR__ . '/../paragonie/random_compat',
             'aliases' => array(),
